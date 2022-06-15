@@ -6,17 +6,15 @@
     <a href="/"><button>Home</button></a>
 </div>
 
+{% for song in playlist.songs%}
+<p>{{song.name}}</p>
+{% endfor%}
+<a href="/:id/edit{{forloop.index0}}" type="submit"><button>Edit my playlist name</button></a>
 
-<form id="add-playlist-form" action="/playlists" method="POST">
-    <label></label>
-    <input type="text" name="name">
-</form>
-<a href="/edit/{{forloop.index0}}/edit" type="submit"><button>Edit my playlist name</button></a></br>
-
-<a href="/edit/{{forloop.index0}}/edit" type="submit"><button>Add songs to my playlist</button></a></br>
+<a href="/edit/{{forloop.index0}}/edit" type="submit"><button>Add songs to my playlist</button></a>
 <form action="/playlist/{{ song._id }}?_method=DELETE" method="POST">
     <input type="submit" value="Delete songs" />
 
-
 </form>
+
 {% endblock %}

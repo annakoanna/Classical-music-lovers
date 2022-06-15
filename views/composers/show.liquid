@@ -8,7 +8,7 @@
 </h1>
 <div class="container-grid">
     
-    {% for song in composer.songs%}
+    {% for song in songs%}
     <div>
         
             <p>{{song.name}}
@@ -16,7 +16,7 @@
                     <input type="submit" value="Add to playlist" />
                 </form>
                 
-          <audio src="../../{{song.audio}}" autoplay controls type="audio/mpeg"></audio></p> 
+          <audio src="../../{{song.audio}}"  controls type="audio/mpeg"></audio></p> 
          
     
         
