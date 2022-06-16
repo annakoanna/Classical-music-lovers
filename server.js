@@ -13,10 +13,11 @@ const userRoutes = require('./routes/users');
 const composerRoutes = require('./routes/composers'); 
 const songRoutes = require('./routes/songs');
 const playlistRoutes = require('./routes/playlists');
+const { set } = require("express/lib/application");
 
 ////////////////////////////////////////////
 app.use(session({ secret: process.env.SECRET,
-    store: MongoStore.create({ mongoUrl: process.env.DATABASE_URL}),
+    store: MongoStore.create({ mongoUrl: process.env.MONGODB_URI}),
     saveUninitialized: true,
     resave: false,}))
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -37,7 +38,7 @@ app.get('/', function(req, res, next) {
   });
 
 // initialize data
-initDatabase();
+//initDatabase();
 
 const listener = app.listen(process.env.PORT || 3000, () => {
     console.log('Your app is listening on port ' + listener.address().port)
