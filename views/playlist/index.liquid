@@ -7,14 +7,15 @@
 </div>
 
 {% for song in playlist.songs%}
-<p>{{song.name}}</p>
-{% endfor%}
-<a href="/:id/edit{{forloop.index0}}" type="submit"><button>Edit my playlist name</button></a>
-
-<a href="/edit/{{forloop.index0}}/edit" type="submit"><button>Add songs to my playlist</button></a>
-<form action="/playlist/{{ song._id }}?_method=DELETE" method="POST">
-    <input type="submit" value="Delete songs" />
-
+<p>{{song.name}} <audio src="../../{{song.audio}}"  controls type="audio/mpeg"></audio></p>
+<form action="/playlists/{{ song._id }}?_method=DELETE" method="POST">
+    <input type="submit" value="Delete song" />
 </form>
+{% endfor%}
+
+<a href="/playlists/{{forloop.index0}}/edit" type="submit"><button>Edit my playlist name</button></a>
+
+
+
 
 {% endblock %}

@@ -36,7 +36,7 @@ app.get('/', function(req, res, next) {
   });
 
 // initialize data
-initDatabase();
+//initDatabase();
 
 const listener = app.listen(process.env.PORT || 3000, () => {
     console.log('Your app is listening on port ' + listener.address().port)

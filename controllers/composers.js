@@ -8,7 +8,7 @@ const db = mongoose.connection
 
 function initDatabase() {
     db.on("open", () => {
-        console.log("Connected to Mongoose")
+       // console.log("Connected to Mongoose")
         // delete composers
         Composer.deleteMany({})
             .then(_ => {
@@ -21,7 +21,7 @@ function initDatabase() {
                                 name: composerData.name
                             });
                             composer.save().then(composer => {
-                                console.log("saved composer: ", composer);
+                               // console.log("saved composer: ", composer);
                                 // create songs
                                 if (composerData.songs) {
                                     composerData.songs.forEach(songData => {
@@ -31,7 +31,7 @@ function initDatabase() {
                                             composer: composer
                                         });
                                         song.save().then(song => {
-                                            console.log("saved song: ", song);
+                                           // console.log("saved song: ", song);
                                         });
                                     })
                                 }

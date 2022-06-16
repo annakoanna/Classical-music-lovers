@@ -23,30 +23,54 @@ const { findById, estimatedDocumentCount } = require('../models/user');
 //             res.json(error)
 //         })
 // });
-router.get('/:id/edit', (req, res)=>{
-const id = req.params.id;
-Playlist/findById(id)
-.then((playlist)=> {
-    res.render("playlist/edit.liquid", {playlist})
+
+router.get('/', (req, res) => {
+    User.findOne({ username: req.session.username })
+        .then(findUser => {
+           // console.log("this is user", findUser._id)
+            return findUser
+        })
+        .then(findUser => {
+            //console.log(findUser)
+            Playlist.findOneAndUpdate({ owner: findUser._id }).populate('songs').exec()
+                .then(playlist => {
+                    //res.send(playlists)
+                    res.render("playlist/index.liquid", { playlist });
+                })
+        })
+        .catch(error => {
+            res.json(error)
+        })
+
 })
-.catch((error) =>{
-res.json({error})
-})
-})
+
+router.delete('/:id',(req, res)=>{
+    const id = req.params.id;
+    Song.findByIdAndDelete(id)
+    .then((song)=> {
+        res.redirect('/playlists');
+    })
+    .catch((error)=>{
+        res.json({error});
+    });
+});
+
+
+
 
 router.post("/:id/playlist", (req, res) => {
 
     User.find({ username: req.session.username })
         .then(findUser => {
-            console.log("this is user", findUser)
+            //console.log("this is user", findUser)
             Playlist.findOneAndUpdate({ owner: findUser._id }).populate('songs').exec()
                
         
                 .then(playlist => {
                     playlist.songs.push(req.params.id)
                     playlist.save()
-                     console.log("this users playlist", playlist)
-                     res.render("playlist/index.liquid", {playlist});
+                    // console.log("this users playlist", playlist)
+                     res.redirect("/playlists");
                   // res.json(playlist)
                    
                 })
@@ -59,54 +83,24 @@ router.post("/:id/playlist", (req, res) => {
 
 
 
-router.get('/', (req, res) => {
-    User.findOne({ username: req.session.username })
-        .then(findUser => {
-            console.log("this is user", findUser._id)
-            return findUser
+
+
+router.get('/:id/edit', (req, res)=>{
+    const id = req.params.id;
+    Playlist.findById(id)
+    .then((playlist)=> {
+        console.log(playlist)
+        res.render("playlist/edit.liquid", {
+            index: req.params.id
         })
-        .then(findUser => {
-            console.log(findUser)
-            Playlist.find({ owner: findUser._id })
-                .populate('songs')
-                .exec()
-                .then(playlist => {
-                    //res.send(playlists)
-                    res.render("playlist/index.liquid", { playlist });
-                })
-        })
-        .catch(error => {
-            res.json(error)
-        })
-
-})
+    })
+    .catch((error) =>{
+    res.json(error)
+    })
+    })
 
 
 
-
-// router.get("/", (req, res) => {
-//     Playlist.find({})
-//     .then(playlists=>{
-//         res.render("playlists/index.liquid",
-//         {  playlists });
-
-//     })
-//     .catch(error =>{
-//         res.json(error)
-//     })
-// });
-// router.get("/:id",(req, res)=>{
-//     Playlist.findById(req.params.id)
-//     .then(playlist=>{
-//         res.render("composers/show.liquid",{playlist})
-//        console.log(playlist)
-
-
-//     })
-//     .catch(error =>{
-//         res.json(error)
-//     })
-// })
 
 
 
