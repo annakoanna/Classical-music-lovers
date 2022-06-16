@@ -7,12 +7,13 @@
     <a href="/"><button>Home</button></a>
 
 </div>
-<h1>{{playlist.name}}</h1>
+
 <form action="/playlists/{{playlist._id}}?_method=PUT" method="post">
-    <input type="text" name="name"/>
     <input type="submit">Playlist name
+    <input type="text" name="name"/>
 
 </form>
+<h1>{{playlist.name}}</h1>
 
 {% for song in playlist.songs%}
 <p>{{song.name}} <audio src="../../{{song.audio}}"  controls type="audio/mpeg"></audio></p>
