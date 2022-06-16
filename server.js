@@ -1,7 +1,8 @@
 require("dotenv").config(); // Load ENV Variables
 const express = require("express"); // import express
 const app = require("liquid-express-views")(express())
-
+const methodOverride = require("method-override")
+const morgan = require("morgan");
 // const router = express.Router();
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
@@ -24,8 +25,8 @@ app.use(bodyParser.json())
 app.use(express.static('public'));
 //const logoutRoutes = require('./routes/logout')
 app.use(express.json());
-
-
+app.use(methodOverride('_method'))
+app.use(morgan("tiny"));
 app.use('/users', userRoutes); 
 app.use('/composers', composerRoutes);
 app.use('/songs', songRoutes);

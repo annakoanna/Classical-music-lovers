@@ -6,7 +6,7 @@ const composersArr = [
             { name: "Alla Turca", audio: "audio/Alla-Turca.mp3" }
         ]
     },
-    { name: "F.List" },
+    { name: "Franz List" },
     { name: "Pyotr Ilyich Tchaikovsky" },
     {
         name: "Frédéric Chopin", songs:[{ name: "Polonaise in A Major", audio: "audio/Polonaise in A Major Op 40 No 1.mp3" }, { name: "Etude in G flat Major", audio: "audio/Etude in G flat Major Op 10 No 5.mp3" }, { name: "Polonaise in A Major", audio: "audio/Polonaise in A Major Op 40 No 1.mp3" }, { name: "Etude in C  Minor", audio: "audio/Etude in C Minor Op 10 No 12.mp3" }]

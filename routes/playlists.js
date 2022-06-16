@@ -47,16 +47,35 @@ router.get('/', (req, res) => {
 router.delete('/:id',(req, res)=>{
     const id = req.params.id;
     console.log(id)
-    //Playlist.song.findByIdAndDelete(id)
-    Playlist.findByIdAndDelete.splice(id, 1)
-//             res.redirect('/playlists')//
-    .then((song)=> {
-        res.redirect('/playlists');
+    User.findOne({username: req.session.username})
+    .then((user)=>{
+        console.log(user)
+        //  Playlist.song.findByIdAndDelete(id)
+          Playlist.findOneAndUpdate({owner: user._id}, {$pull: {songs: id}}).exec()
+          .then((playlist)=> {
+              console.log(playlist)
+              res.redirect('/playlists');
+          })
+
     })
     .catch((error)=>{
         res.json({error});
     });
 });
+
+
+router.put("/playlists/:id", (req, res)=>{
+    const id = req.params.id;
+    req.body
+    Playlist.findBiIdAndUpdate(id, req.body, {new: true})
+    .then((playlist)=>{
+        res.redirect('/')
+    })
+    .catch((error)=>{
+        console.log(error)
+        res.json({error});
+    })
+})
 
 
 
