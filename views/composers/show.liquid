@@ -6,22 +6,28 @@
 <a href="/"><button>Home</button></a>
 <h1>{{composer.name}} songs
 </h1>
+<h1></h1>
+<form action="/playlists/{{song._id}}/playlist/name?_method=POST" method="post">
+    <input type="text" name="name"/>
+    <input type="submit">Playlist name
+
+</form>
 <div class="container-grid">
-    
+
     {% for song in songs%}
     <div>
-        
-            <p>{{song.name}}
-                <form action="/playlists/{{song._id}}/playlist" method="POST">
-                    <input type="submit" value="Add to playlist" />
-                </form>
-                
-          <audio src="../../{{song.audio}}"  controls type="audio/mpeg"></audio></p> 
-         
-    
-        
-        
+
+        <p>{{song.name}}
+        <form action="/playlists/{{song._id}}/playlist" method="POST">
+            <input type="submit" value="Add to playlist" />
+        </form>
+
+        <audio src="../../{{song.audio}}" controls type="audio/mpeg"></audio></p>
+
+
+
+
     </div>
     {% endfor %}
 
-{% endblock %}
+    {% endblock %}

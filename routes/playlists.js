@@ -34,6 +34,7 @@ router.get('/', (req, res) => {
             //console.log(findUser)
             Playlist.findOneAndUpdate({ owner: findUser._id }).populate('songs').exec()
                 .then(playlist => {
+                    console.log(playlist._id)
                     //res.send(playlists)
                     res.render("playlist/index.liquid", { playlist });
                 })
@@ -64,12 +65,13 @@ router.delete('/:id',(req, res)=>{
 });
 
 
-router.put("/playlists/:id", (req, res)=>{
+router.put("/:id", (req, res)=>{
     const id = req.params.id;
-    req.body
-    Playlist.findBiIdAndUpdate(id, req.body, {new: true})
+    
+    Playlist.findByIdAndUpdate(id, req.body, {new: true})
     .then((playlist)=>{
-        res.redirect('/')
+        console.log(playlist)
+        res.redirect(`/playlists`)
     })
     .catch((error)=>{
         console.log(error)

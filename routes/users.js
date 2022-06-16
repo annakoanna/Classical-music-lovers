@@ -56,10 +56,13 @@ router.post("/signup", async (req, res) => {
       req.body.password,
       await bcrypt.genSalt(10)
     );
+
+    
     // create the new user
+
     User.create(req.body)
       .then((newUser) => {
-          Playlist.create({owner:newUser._id})
+          Playlist.create({owner:newUser._id, name: ""})
         // redirect to login page
         res.redirect("/users/login");
       })
