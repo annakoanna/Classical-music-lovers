@@ -46,7 +46,10 @@ router.get('/', (req, res) => {
 
 router.delete('/:id',(req, res)=>{
     const id = req.params.id;
-    Song.findByIdAndDelete(id)
+    console.log(id)
+    //Playlist.song.findByIdAndDelete(id)
+    Playlist.findByIdAndDelete.splice(id, 1)
+//             res.redirect('/playlists')//
     .then((song)=> {
         res.redirect('/playlists');
     })

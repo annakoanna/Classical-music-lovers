@@ -1,8 +1,9 @@
 {% layout "layout.liquid" %} {% block content %}
 <h1>Classical music lovers
-    
-
 </h1>
+<a href="/playlists"><button>My playlist</button></a>
+<a href="/users/logout" class="nav-link text-light"><button>Log Out</button></a>
+<a href="/"><button>Home</button></a>
 <h2>Composers:</h2>
 <div class="container-grid">
     {% for composer in composers%}
