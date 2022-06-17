@@ -1,10 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const playlistsCtrl = require('../controllers/playlists');
-
 const Playlist = require('../models/playlist');
 const Song = require('../models/song');
-// const composersCtrl = require('./controllers/composers');
 const composers = require('../data/composers.js');
 const { ServerOpeningEvent } = require('mongodb');
 const res = require('express/lib/response');
@@ -37,23 +35,19 @@ router.delete('/:id', (req, res) => {
     User.findOne({ username: req.session.username })
         .then((user) => {
             console.log(user)
-
             Playlist.findOneAndUpdate({ owner: user._id }, { $pull: { songs: id } }).exec()
                 .then((playlist) => {
                     console.log(playlist)
                     res.redirect('/playlists');
                 })
-
         })
         .catch((error) => {
             res.json({ error });
         });
 });
 
-
 router.put("/:id", (req, res) => {
     const id = req.params.id;
-
     Playlist.findByIdAndUpdate(id, req.body, { new: true })
         .then((playlist) => {
             console.log(playlist)
@@ -64,8 +58,6 @@ router.put("/:id", (req, res) => {
             res.json({ error });
         })
 })
-
-
 router.post("/:id/playlist", (req, res) => {
 
     User.find({ username: req.session.username })
@@ -77,12 +69,10 @@ router.post("/:id/playlist", (req, res) => {
                     playlist.save()
                     // console.log("this users playlist", playlist)
                     res.redirect("/playlists");
-
                 })
                 .catch(error => {
                     res.json(error)
                 })
-
         })
 });
 

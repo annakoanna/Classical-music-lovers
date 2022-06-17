@@ -2,18 +2,14 @@
 const express = require('express');
 const Composer = require('../models/composer');
 const router = express.Router();
-
 const composers = require('../data/composers.js');
 const Song = require('../models/song');
-//////////////////////////////////////
-
 
 router.get("/", (req, res) => {
     Composer.find({})
         .then(composers => {
             res.render("composers/index.liquid",
                 { composers });
-
         })
         .catch(error => {
             res.json(error)

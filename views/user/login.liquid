@@ -1,20 +1,19 @@
-{% layout "layout.liquid" %} 
+{% layout "layout.liquid" %}
 {% block content %}
+
 <body class="loginpage">
-<h1>Classical music lovers</h1>
-<div class="signup">
-        <form action="/users/login/" method="post">
-          <fieldset>
-            <legend class="user">User Login</legend>
-            <label
-              >USERNAME: <input type="text" name="username" required />
-            </label>
-            <label
-              >PASSWORD: <input type="password" name="password" required />
-            </label>
-            <input type="submit" value="Login" />
-          </fieldset>
-        </form>
-      </div>
-    </body>
+  <h1>Classical music lovers</h1>
+  <div class="signup">
+    <form action="/users/login/" method="post">
+      <fieldset>
+        <legend class="user">User Login</legend>
+        <label>USERNAME: <input type="text" name="username" required />
+        </label>
+        <label>PASSWORD: <input type="password" name="password" required />
+        </label>
+        <input type="submit" value="Login" />
+      </fieldset>
+    </form>
+  </div>
+</body>
 {% endblock %}

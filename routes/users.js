@@ -14,7 +14,6 @@ router.post("/login/", async (req, res) => {
             if (user) {
                 const result = await bcrypt.compare(password, user.password);
                 if (result) {
-
                     req.session.username = username;
                     req.session.loggedIn = true;
 
@@ -23,19 +22,16 @@ router.post("/login/", async (req, res) => {
                     res.json({ error: "password doesn't match" });
                 }
             } else {
-
                 res.json({ error: "user doesn't exist" });
             }
         })
         .catch((error) => {
-
             console.log(error);
             res.json({ error });
         });
 });
 
 router.get("/logout", (req, res) => {
-
     req.session.destroy((err) => {
         res.redirect("/");
     });
@@ -46,7 +42,6 @@ router.post("/signup", async (req, res) => {
         req.body.password,
         await bcrypt.genSalt(10)
     );
-
     User.create(req.body)
         .then((newUser) => {
             Playlist.create({ owner: newUser._id, name: "" })
