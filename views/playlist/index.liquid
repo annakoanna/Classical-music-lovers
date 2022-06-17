@@ -3,31 +3,32 @@
 <div><a href="/composers"><button>Composers</button></a>
     <a href="/playlists"><button>My playlist</button></a>
     <a href="/users/logout" class="nav-link text-light"><button>Log Out</button></a>
-
     <a href="/"><button>Home</button></a>
-
 </div>
-
-<form action="/playlists/{{playlist._id}}?_method=PUT" method="post">
-    <label class="signup2">Playlist name: <input type="text" name="name" required /> </label>
-    <input type="submit" value="Submit" />
-</form>
+<div class="container3">
+    <div class="playlist">
+        <form action="/playlists/{{playlist._id}}?_method=PUT" method="post">
+            <label class="signup2">Playlist name: <input type="text" name="name" required /> </label>
+            <input type="submit" value="Submit" />
+        </form>
+    </div>
+</div>
 
 <h2 class="name" id="name">{{playlist.name}}</h2>
 
 <div class="container2">
 
-{% for song in playlist.songs%}
-<div class="song">
-<h3>{{song.name}}</h3>
-<audio src="../../{{song.audio}}" controls type="audio/mpeg"></audio>
+    {% for song in playlist.songs%}
+    <div class="song">
+        <h3>{{song.name}}</h3>
+        <audio src="../../{{song.audio}}" controls type="audio/mpeg"></audio>
 
-<form action="/playlists/{{ song._id }}?_method=DELETE" method="POST">
-    <input type="submit" value="Delete song" />
-</form>
-</div>
+        <form action="/playlists/{{ song._id }}?_method=DELETE" method="POST">
+            <input type="submit" value="Delete song" />
+        </form>
+    </div>
 
-{% endfor%}
+    {% endfor%}
 
 </div>
 

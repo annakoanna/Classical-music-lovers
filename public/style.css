@@ -1,15 +1,15 @@
 body {
-    background-image: url("https://data.whicdn.com/images/70053125/original.gif");
-    /* background-image: url("https://cdn.dribbble.com/users/1242979/screenshots/7099165/music.gif"); */
+    
+     background-image: url("https://cdn.dribbble.com/users/1242979/screenshots/7099165/music.gif"); 
     background-size: cover;
     margin: 2em;
-    color: black;
+    color: whitesmoke;
     /* background-image: url("https://i.pinimg.com/originals/49/26/52/492652d5649bb403be09e0ea3d04fbe7.gif"); */
 }
 
 h2 {
     font-size: 3em;
-    color: black;
+    color: whitesmoke;
     font-family: 'Londrina Shadow', cursive;
 }
 
@@ -22,15 +22,28 @@ h1 {
     background-color: rgb(118, 139, 177);
     font-family: 'Londrina Shadow', cursive;
 }
+.user {
+    font-size: 2em;
+}
 
 .signup {
     color: whitesmoke;
     font-size: 2em;
     size: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+   
 }
 
 #id {
     align-items: center;
+}
+.playlist {
+    display: grid;
+    grid-template-columns: 15vw 15vw 15vw;
+    
 }
 
 .song {
@@ -62,9 +75,18 @@ h1 {
      width: 60vw;
      height: 75vh;
 }
+.container3 {
+    display:flex;
+    flex-flow: column nowrap;
+     position: absolute;
+     top: 25vh;
+     left: 5vw;
+     width: 60vw;
+     height: 75vh;
+}
 
 .signup2 {
-    color: black;
+    color: whitesmoke;
     font-size: 2em;
     size: 2em;
     font-family: 'Londrina Shadow', cursive;
@@ -81,14 +103,14 @@ h3 {
     align-items: center;
     font-family: 'Londrina Shadow', cursive;
     margin: 10px;
-    color: black;
+    color: whitesmoke;
 }
 
 #name {
     align-items: center;
     justify-content: center;
     display: flex;
-    color: black;
+    color: whitesmoke;
     font-size: 4em;
     font-family: 'Londrina Shadow', cursive;
 }
@@ -125,9 +147,9 @@ input[type='button'],
 input[type='reset'],
 input[type='submit'] {
     background-color: rgb(118, 139, 177);
-    border: 0.1rem solid white;
+    border: 0.1rem solid whitesmoke;
     border-radius: 0.4rem;
-    color: black;
+    color: whitesmoke;
     cursor: pointer;
     display: inline-block;
     font-size: 1.1rem;
