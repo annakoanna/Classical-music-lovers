@@ -14,7 +14,7 @@ const { findById, estimatedDocumentCount } = require('../models/user');
 router.get('/', (req, res) => {
     User.findOne({ username: req.session.username })
         .then(findUser => {
-           // console.log("this is user", findUser._id)
+            // console.log("this is user", findUser._id)
             return findUser
         })
         .then(findUser => {
@@ -31,38 +31,38 @@ router.get('/', (req, res) => {
         })
 })
 
-router.delete('/:id',(req, res)=>{
+router.delete('/:id', (req, res) => {
     const id = req.params.id;
     console.log(id)
-    User.findOne({username: req.session.username})
-    .then((user)=>{
-        console.log(user)
-    
-          Playlist.findOneAndUpdate({owner: user._id}, {$pull: {songs: id}}).exec()
-          .then((playlist)=> {
-              console.log(playlist)
-              res.redirect('/playlists');
-          })
+    User.findOne({ username: req.session.username })
+        .then((user) => {
+            console.log(user)
 
-    })
-    .catch((error)=>{
-        res.json({error});
-    });
+            Playlist.findOneAndUpdate({ owner: user._id }, { $pull: { songs: id } }).exec()
+                .then((playlist) => {
+                    console.log(playlist)
+                    res.redirect('/playlists');
+                })
+
+        })
+        .catch((error) => {
+            res.json({ error });
+        });
 });
 
 
-router.put("/:id", (req, res)=>{
+router.put("/:id", (req, res) => {
     const id = req.params.id;
-    
-    Playlist.findByIdAndUpdate(id, req.body, {new: true})
-    .then((playlist)=>{
-        console.log(playlist)
-        res.redirect(`/playlists`)
-    })
-    .catch((error)=>{
-        console.log(error)
-        res.json({error});
-    })
+
+    Playlist.findByIdAndUpdate(id, req.body, { new: true })
+        .then((playlist) => {
+            console.log(playlist)
+            res.redirect(`/playlists`)
+        })
+        .catch((error) => {
+            console.log(error)
+            res.json({ error });
+        })
 })
 
 
@@ -76,8 +76,8 @@ router.post("/:id/playlist", (req, res) => {
                     playlist.songs.push(req.params.id)
                     playlist.save()
                     // console.log("this users playlist", playlist)
-                     res.redirect("/playlists");
-                  
+                    res.redirect("/playlists");
+
                 })
                 .catch(error => {
                     res.json(error)
@@ -87,18 +87,18 @@ router.post("/:id/playlist", (req, res) => {
 });
 
 
-router.get('/:id/edit', (req, res)=>{
+router.get('/:id/edit', (req, res) => {
     const id = req.params.id;
     Playlist.findById(id)
-    .then((playlist)=> {
-        console.log(playlist)
-        res.render("playlist/edit.liquid", {
-            index: req.params.id
+        .then((playlist) => {
+            console.log(playlist)
+            res.render("playlist/edit.liquid", {
+                index: req.params.id
+            })
         })
-    })
-    .catch((error) =>{
-    res.json(error)
-    })
-    })
+        .catch((error) => {
+            res.json(error)
+        })
+})
 
 module.exports = router;

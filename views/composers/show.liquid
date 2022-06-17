@@ -1,25 +1,29 @@
 {% layout "layout.liquid" %} {% block content %}
 <h1>Classical music lovers</h1>
-<div class="composers">
-<a href="/composers"><button>Composers</button></a>
-<a href="/playlists"><button>My playlist</button></a>
-<a href="/users/logout" class="nav-link text-light"><button>Log Out</button></a>
-<a href="/"><button>Home</button></a>
+<div>
+    <a href="/composers"><button>Composers</button></a>
+    <a href="/playlists"><button>My playlist</button></a>
+    <a href="/users/logout" class="nav-link text-light"><button>Log Out</button></a>
+    <a href="/"><button>Home</button></a>
 </div>
 
 <h2 class="name" id="name">{{composer.name}} songs
 </h2>
 
-
-<div class="song">
+<div class="container">
     {% for song in songs%}
-    <h3 class="songs">{{song.name}}</h3></div>
+    <div class="song">
+        <h3 class="songs">{{song.name}}</h3>
         <audio src="../../{{song.audio}}" controls type="audio/mpeg"></audio>
-    
-    <form action="/playlists/{{song._id}}/playlist" method="POST">
-        <input type="submit" value="Add to playlist" />
-    </form>
+        <form action="/playlists/{{song._id}}/playlist" method="POST">
+            <input type="submit" id="id" value="Add to playlist" />
+        </form>
+    </div>
 
-{% endfor %}
+
+        
+    
+    {% endfor %}
+</div>
 
 {% endblock %}

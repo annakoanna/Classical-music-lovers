@@ -5,12 +5,10 @@ const CONFIG = {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 };
-
 mongoose.connect(MONGODB_URI, CONFIG);// log
 mongoose.connection.on('connected', () => {
     console.log(`Mongoose connected to ${mongoose.connection.host}:${mongoose.connection.port}`);
 });
-
 mongoose.connection.on("error", (err) => {
     console.log("Could not connect to MongoDB!", err);
 });
