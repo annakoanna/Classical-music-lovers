@@ -5,22 +5,25 @@ App with classical music , where you can listen different composers, create your
 
 ### TECHNOLOGIES USED
 
-  CSS
-  JavaScript
-  HTML
-  Node JS
-  Liquid
-  MongoDB
-  Mongoose
-  Heroku
+  1. CSS
+  2. JavaScript
+  3. HTML
+  4. Node JS
+  5. Liquid
+  6. MongoDB
+  7. Mongoose
+  8. Heroku
 
   #### MODELS
-   User
-   Playlist
-   Song
-   Composer
+   1. User
+   2. Playlist
+   3. Song
+   4. Composer
 
-   ##### ANTITY RELATIONSHIP DIAGRAM
+   ##### Router
+   <img src="image/8650C8A1-CAB3-4252-BD67-9125E6E6A983_1_201_a.jpeg">
+
+   ###### ANTITY RELATIONSHIP DIAGRAM
 
    ###### WIREFRAME
 
