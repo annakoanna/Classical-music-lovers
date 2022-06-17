@@ -1,14 +1,69 @@
 body {
-    background-image: url("https://cdn.dribbble.com/users/1242979/screenshots/7099165/music.gif");
+    background-image: url("https://data.whicdn.com/images/70053125/original.gif");
+    /* background-image: url("https://cdn.dribbble.com/users/1242979/screenshots/7099165/music.gif"); */
     background-size: cover;
     margin:2em;
+    /* background-image: url("https://i.pinimg.com/originals/49/26/52/492652d5649bb403be09e0ea3d04fbe7.gif"); */
 }
-h1 {
-    
-    color:olive;
+h2 {
+    font-size: 3em;
+    color: black;
+    font-family: 'Londrina Shadow', cursive;
 }
 h1{
     align-items: center;
     justify-content: center;
     display: flex;
+    color: aliceblue;
+    font-size: 4em;
+    background-color: rgb(118, 139, 177);
+    font-family: 'Londrina Shadow', cursive;
 }
+.login {
+}
+
+h3 {
+    font-size: 2em;
+    font-family: 'Londrina Shadow', cursive;
+}
+.songs {
+    justify-items: center;
+    display: inline;
+    align-items: center;
+    font-family: 'Londrina Shadow', cursive;
+    margin: 10px;
+    color: rgb(14, 14, 14);
+}
+#name{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    color: black
+    font-size: 4em;
+    font-family: 'Londrina Shadow', cursive;
+}
+.composers{
+    display: grid;
+    grid-auto-flow: column;
+    
+   
+   
+
+}
+.loginpage {
+    background-image: url("https://cdn.dribbble.com/users/1242979/screenshots/7099165/music.gif"); */
+    background-size: cover;
+    /* background-image: url("https://i.pinimg.com/originals/c7/8c/2e/c78c2e9da2ef54230d6e0bcf412588d1.gif");
+    background-size: cover;
+*/
+}
+.index {
+    display: grid;
+    align-content: space-around;
+    justify-items: start;
+    
+}
+audio {
+    size:2em;
+}
+audio:hover {transform: scale(1.1);filter: drop-shadow(2px 3px 3px #333);}

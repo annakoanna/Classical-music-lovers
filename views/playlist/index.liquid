@@ -9,22 +9,20 @@
 </div>
 
 <form action="/playlists/{{playlist._id}}?_method=PUT" method="post">
-    <input type="submit">Playlist name
-    <input type="text" name="name"/>
+    <!-- <input type="submit">Playlist name
+    <input type="text" name="name"/> -->
+    <label>Playlist name: <input type="text" name="name" required /> </label>
+    <input type="submit" value="Submit" />
 
 </form>
-<h1>{{playlist.name}}</h1>
-
-{% for song in playlist.songs%}
-<p>{{song.name}} <audio src="../../{{song.audio}}"  controls type="audio/mpeg"></audio></p>
+<h2 class="name" id="name">{{playlist.name}}</h2>
+<div class="index">
+<h3>{% for song in playlist.songs%}
+{{song.name}} <audio src="../../{{song.audio}}"  controls type="audio/mpeg"></audio></h3>
 <form action="/playlists/{{ song._id }}?_method=DELETE" method="POST">
     <input type="submit" value="Delete song" />
 </form>
+</div>
 {% endfor%}
-
-<a href="/playlists/{{forloop.index0}}/edit" type="submit"><button>Edit my playlist name</button></a>
-
-
-
 
 {% endblock %}

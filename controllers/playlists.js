@@ -4,8 +4,6 @@ console.log('this is from playlist index controller')
 }
  module.exports = {
    index,
-//     show,
-//     new: newPlaylist,
-//     create
+
   };
   

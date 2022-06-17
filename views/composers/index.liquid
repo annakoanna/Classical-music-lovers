@@ -1,17 +1,18 @@
 {% layout "layout.liquid" %} {% block content %}
 <h1>Classical music lovers
 </h1>
-<a href="/playlists"><button>My playlist</button></a>
-<a href="/users/logout" class="nav-link text-light"><button>Log Out</button></a>
-<a href="/"><button>Home</button></a>
+<div class="composers">
+    <a href="/playlists"><button>My playlist</button></a>
+    <a href="/users/logout" class="nav-link text-light"><button>Log Out</button></a>
+    <a href="/"><button>Home</button></a>
+</div>
 <h2>Composers:</h2>
 <div class="container-grid">
     {% for composer in composers%}
     <div>
-        <p><a href="/composers/{{composer._id}}">{{composer.name}}</a></p>
-        
+        <h3 class="songs"><a href="/composers/{{composer._id}}">{{composer.name}}</a></h3>
+
     </div>
     {% endfor %}
 
-
-{% endblock %}
+    {% endblock %}
