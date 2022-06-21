@@ -77,18 +77,6 @@ router.post("/:id/playlist", (req, res) => {
 });
 
 
-router.get('/:id/edit', (req, res) => {
-    const id = req.params.id;
-    Playlist.findById(id)
-        .then((playlist) => {
-            console.log(playlist)
-            res.render("playlist/edit.liquid", {
-                index: req.params.id
-            })
-        })
-        .catch((error) => {
-            res.json(error)
-        })
-})
+
 
 module.exports = router;
